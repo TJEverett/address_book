@@ -9,12 +9,21 @@ var showAddress = function(address){
   }, 750);
 };
 
-var writeName = function(){
+var writeName = function(name){
+  var write = '<div class="address' + catalog + '"><p>' + name + '</p></div>';
+  jQuery(".names").append(write);
+};
 
-}
+var writeAddress = function(phone, email, address){
+  var write = '<div class="address' + catalog + '"><p>' + phone + '</p><p>' + email + '</p><p>' + address + '</p></div>';
+  jQuery(".info").append(write);
+};
 
-
-
+var writeContact = function(name, phone, email, address){
+  writeName(name);
+  writeAddress(phone, email, address);
+  catalog = catalog + 1;
+};
 
 jQuery(document).ready(function(){
   jQuery(".names p").click(function(){
@@ -24,9 +33,12 @@ jQuery(document).ready(function(){
   });
 
   jQuery("#addressAdd").submit(function(event){
+    event.preventDefault();
     var name = jQuery("input#name").val();
     var phone = jQuery("input#phone").val();
     var email = jQuery("input#email").val();
     var address = jQuery("input#address").val();
+
+    writeContact(name, phone, email, address);
   });
 });
