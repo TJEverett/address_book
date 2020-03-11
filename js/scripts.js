@@ -1,18 +1,32 @@
+var catalog = 4;
+
+
+var showAddress = function(address){
+  jQuery(".info").children().slideUp();
+  var location = ".info ." + address;
+  setTimeout(function(){
+    jQuery(location).slideDown();
+  }, 750);
+};
+
+var writeName = function(){
+
+}
+
+
+
+
 jQuery(document).ready(function(){
-  jQuery(".names .address1").click(function(){
-    jQuery(".info").children().slideUp();
-    setTimeout(function(){
-      jQuery(".info .address1").slideDown();
-    }, 600)
+  jQuery(".names p").click(function(){
+    console.log(jQuery(this).parent()[0].className);
+    var className = jQuery(this).parent()[0].className;
+    showAddress(className);
   });
 
-  jQuery(".names .address2").click(function(){
-    jQuery(".info").children().slideUp();
-    jQuery(".info .address2").slideDown();
-  });
-
-  jQuery(".names .address3").click(function () {
-    jQuery(".info").children().slideUp();
-    jQuery(".info .address3").slideDown();
+  jQuery("#addressAdd").submit(function(event){
+    var name = jQuery("input#name").val();
+    var phone = jQuery("input#phone").val();
+    var email = jQuery("input#email").val();
+    var address = jQuery("input#address").val();
   });
 });
