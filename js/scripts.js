@@ -26,7 +26,9 @@ var writeContact = function(name, phone, email, address){
 };
 
 jQuery(document).ready(function(){
-  jQuery(".names p").click(function(){
+  jQuery(".info").children().slideUp();
+  
+  jQuery(".names").on("click", "p", function(){
     console.log(jQuery(this).parent()[0].className);
     var className = jQuery(this).parent()[0].className;
     showAddress(className);
@@ -40,5 +42,6 @@ jQuery(document).ready(function(){
     var address = jQuery("input#address").val();
 
     writeContact(name, phone, email, address);
+    jQuery(".info").children().slideUp();
   });
 });
